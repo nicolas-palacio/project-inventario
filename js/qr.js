@@ -1,30 +1,5 @@
-/*function domReady(fn){
-    if(document.readyState==="complete" || document.readyState==="interactive"){
-        setTimeout(fn,1);
-    }else{
-        document.addEventListener("DOMContentLoaded",fn);
-    }
-
-    domReady(function(){
-        var myqr=document.getElementById('qr-result');
-        var lastResult,countResults=0;
-
-        function onScanSuccess(decodeText,decodeResult){
-            if(decodeText!=lastResult){
-                countResults++;
-                lastResult=decodeText;
-                alert("You QR is: "+decodeText,decodeResult);
-                myqr.innerHTML=`you scan ${countResults} : ${decodeText}`;
-            }
-        }
-
-        var htmlScanner= new Html5QrcodeScanner(
-            "qr-reader",{fps:10,qrbox:250});
-        htmlScanner.render(onScanSuccess)    ;
-    });
-}*/
 //crea elemento
-const video = document.createElement("video");
+/*const video = document.createElement("video");
 
 //nuestro camvas
 const canvasElement = document.getElementById("qr-canvas");
@@ -35,6 +10,7 @@ const btnScanQR = document.getElementById("btn-scan-qr");
 
 //lectura desactivada
 let scanning = false;
+
 
 //funcion para encender la camara
 const encenderCamara = () => {
@@ -93,8 +69,25 @@ qrcode.callback = (respuesta) => {
     cerrarCamara();    
 
   }
+};*/
+const btnScanQR = document.getElementById("btn-scan-qr");
+const html5Qrcode = new Html5Qrcode('reader');
+        const qrCodeSuccessCallback = (decodedText, decodedResult)=>{
+            if(decodedText){
+                document.getElementById('show').style.display = 'block';
+                document.getElementById('result').textContent = decodedText;
+                html5Qrcode.stop();
+            }
+        }
+        const config = {fps:10, qrbox:{width:250, height:250}}
+        
+
+const encenderCamara = () => {
+    btnScanQR.hidden = true;
+    html5Qrcode.start({facingMode:"environment"}, config,qrCodeSuccessCallback ); 
 };
-//evento para mostrar la camara sin el boton 
-window.addEventListener('load', (e) => {
-  encenderCamara();
-})
+
+const cerrarCamara = () => {   
+    html5Qrcode.stop();
+    btnScanQR.hidden = false;
+  };
