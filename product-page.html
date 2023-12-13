@@ -23,7 +23,10 @@
               <div class="card text-black" style="border-radius: 25px;">
                 <div class="card-body p-md-5">
                   <div class="row justify-content-center">
-                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">     
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"> 
+                      <div class="spinner-border text-success spinner-border-lg d-none" id="spinner-card" role="status" style="width:10rem; height:10rem;margin-top: 30%;margin-left:150px;;z-index: 10;">
+                        <span class="sr-only"></span>
+                      </div>    
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 " id="product-name">{nombre producto}</p>
                       <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4 " id="product-amount">Cantidad: {cantidad}</p>  
                       <form class="mx-1 mx-md-4" id="form-page">
@@ -53,6 +56,7 @@
                         </div>
       
                       </form>
+                      
                       
                       
                     </div>

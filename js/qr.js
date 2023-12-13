@@ -77,6 +77,7 @@ const html5Qrcode = new Html5Qrcode('reader');
                 document.getElementById('show').style.display = 'block';
                 document.getElementById('result').textContent = decodedText;
                 html5Qrcode.stop();
+                window.location.href='http://localhost:5500/project-insumos/product-page.html?action=getInsumos&product='+decodedText;
             }
         }
         const config = {fps:10, qrbox:{width:250, height:250}}
