@@ -4,6 +4,7 @@ const productAmount=document.getElementById('product-amount');
 const btnEnter=document.getElementById('btn-enter');
 const btnOut=document.getElementById('btn-out');
 const enterField=document.getElementById('enter-field');
+const outField=document.getElementById('out-field');
 const spinner=document.getElementById('spinner-card');
 
 
@@ -40,6 +41,23 @@ const getProduct=async ()=>{
     
 }
 getProduct();
+
+btnOut.addEventListener("click",(e)=>{
+    const amountInt=parseInt(outField.value);
+
+    const DATA={amount:`${amountInt}`,option:"sub"};
+    console.log(JSON.stringify(DATA)+"  hiii");
+
+    fetch(API_URL+"?action=modInsumo&product="+product, {
+        redirect: "follow",
+        method: "POST",
+        body: JSON.stringify(DATA),
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      })
+
+});
 
 btnEnter.addEventListener("click",(e)=>{
     const amountInt=parseInt(enterField.value);
