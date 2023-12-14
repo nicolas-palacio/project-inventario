@@ -3,6 +3,7 @@ const productName=document.getElementById('product-name');
 const productAmount=document.getElementById('product-amount');
 const btnEnter=document.getElementById('btn-enter');
 const btnOut=document.getElementById('btn-out');
+const btnHome=document.getElementById('btn-home');
 const enterField=document.getElementById('enter-field');
 const outField=document.getElementById('out-field');
 const spinner=document.getElementById('spinner-card');
@@ -41,6 +42,10 @@ const getProduct=async ()=>{
     
 }
 getProduct();
+
+btnHome.addEventListener("click",(e)=>{
+    window.location.href='https://project-insumos.vercel.app/';
+});
 
 btnOut.addEventListener("click",(e)=>{
     const amountInt=parseInt(outField.value);
