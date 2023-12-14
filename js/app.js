@@ -60,6 +60,8 @@ btnOut.addEventListener("click",(e)=>{
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
         },
+      }).then(function(response){
+        window.location=window.location;
       })
 
 });
@@ -69,7 +71,7 @@ btnEnter.addEventListener("click",(e)=>{
 
     const DATA={amount:`${amountInt}`,option:"add"};
     console.log(JSON.stringify(DATA)+"  hiii");
-
+    
     fetch(API_URL+"?action=modInsumo&product="+product, {
         redirect: "follow",
         method: "POST",
@@ -77,15 +79,10 @@ btnEnter.addEventListener("click",(e)=>{
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
         },
+      }).then(function(response){
+        window.location=window.location;
       })
+      
 
-    /*axios.post(API_URL+"?action=modInsumo&product="+product,{
-        amount:`${enterField}`,
-        option:"add"
-    }).then((response)=>{        
-        console.log("HIIII");
-    }).catch((error)=>{
-        
-    });*/
 });
 
