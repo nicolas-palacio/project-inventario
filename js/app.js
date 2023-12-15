@@ -11,7 +11,7 @@ const spinner=document.getElementById('spinner-card');
 
 const queryString=window.location.search;
 const urlParams= new URLSearchParams(queryString);
-const API_URL='https://script.google.com/macros/s/AKfycbzUfRAG-WQLqzMWtFoirrNrDpuqzpaDUSOGzOTwOEGcBY57hH7mmpy9vfz4xGky5e-M-A/exec'
+const API_URL='https://script.google.com/macros/s/AKfycbwnT1t86eg58Mnn9o-IYmBrZNF8M3sgtXbl84GAJzcAI9Ng0OOn3hkW-y3SqGjYMHXBBg/exec'
 
 const product= urlParams.get('product');
 
@@ -20,17 +20,17 @@ formPage.addEventListener("click",(e)=>{
 });
 
 const getProduct=async ()=>{ 
-    spinner.classList.remove("d-none");
+    /*spinner.classList.remove("d-none");
     formPage.classList.add("d-none");
     productName.classList.add("d-none");
-    productAmount.classList.add("d-none");
+    productAmount.classList.add("d-none");*/
 
     await axios.get(API_URL+"?action=getInsumos&product="+product)
     .then((res)=>{
-        spinner.classList.add("d-none");
+        /*spinner.classList.add("d-none");
         formPage.classList.remove("d-none"); 
         productName.classList.remove("d-none");
-        productAmount.classList.remove("d-none");
+        productAmount.classList.remove("d-none");*/
         
         productName.innerHTML=res.data.name;
         productAmount.innerHTML='Cantidad: '+res.data.amount;     
@@ -44,7 +44,7 @@ const getProduct=async ()=>{
 getProduct();
 
 btnHome.addEventListener("click",(e)=>{
-    window.location.href='https://project-insumos.vercel.app/';
+   // window.location.href='https://project-inventario.vercel.app/';
 });
 
 btnOut.addEventListener("click",(e)=>{
