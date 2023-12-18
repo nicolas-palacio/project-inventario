@@ -70,6 +70,7 @@ qrcode.callback = (respuesta) => {
 
   }
 };*/
+const btnShowTable=document.getElementById('btn-excel');
 const btnScanQR = document.getElementById("btn-scan-qr");
 const html5Qrcode = new Html5Qrcode('reader');
         const qrCodeSuccessCallback = (decodedText, decodedResult)=>{
@@ -92,3 +93,7 @@ const cerrarCamara = () => {
     html5Qrcode.stop();
     btnScanQR.hidden = false;
   };
+
+btnShowTable.addEventListener('click',(e)=>{
+    window.open('https://docs.google.com/spreadsheets/d/1w3Fwv90ujmzOewlWA-dy8oXrL1yiceNDgd5PjV2gKHA/edit#gid=0','blank');
+  });

@@ -1,4 +1,5 @@
 const formPage=document.getElementById("form-page");
+const btnShowTable=document.getElementById('btn-excel');
 const productName=document.getElementById('product-name');
 const productAmount=document.getElementById('product-amount');
 const btnAccept=document.getElementById('btn-accept');
@@ -16,6 +17,10 @@ const urlParams= new URLSearchParams(queryString);
 const API_URL='https://script.google.com/macros/s/AKfycbxftcLJimg4Ow0TRPFZ67L5v6lAgTTGfjCMYEBTuVMoqRg4NtChybmENYJUv0bROQPk_Q/exec'
 
 const product= urlParams.get('product');
+
+btnShowTable.addEventListener('click',(e)=>{
+  window.open('https://docs.google.com/spreadsheets/d/1w3Fwv90ujmzOewlWA-dy8oXrL1yiceNDgd5PjV2gKHA/edit#gid=0','blank');
+});
 
 formPage.addEventListener("click",(e)=>{
     e.preventDefault();
