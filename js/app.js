@@ -1,8 +1,7 @@
 const formPage=document.getElementById("form-page");
 const productName=document.getElementById('product-name');
 const productAmount=document.getElementById('product-amount');
-const btnEnter=document.getElementById('btn-enter');
-const btnOut=document.getElementById('btn-out');
+const btnAccept=document.getElementById('btn-accept');
 const btnHome=document.getElementById('btn-home');
 const enterField=document.getElementById('enter-field');
 const locationField=document.getElementById('location-field');
@@ -14,7 +13,7 @@ const spinner=document.getElementById('spinner-card');
 
 const queryString=window.location.search;
 const urlParams= new URLSearchParams(queryString);
-const API_URL='https://script.google.com/macros/s/AKfycbxo7jc5JJA8FEi6TleDdyDecuLlv01e9NIDlO0pfLSUUUi13PMp7FujTn7LrBid19urFw/exec'
+const API_URL='https://script.google.com/macros/s/AKfycbxftcLJimg4Ow0TRPFZ67L5v6lAgTTGfjCMYEBTuVMoqRg4NtChybmENYJUv0bROQPk_Q/exec'
 
 const product= urlParams.get('product');
 
@@ -46,14 +45,28 @@ const getProduct=async ()=>{
 }
 
 function loadDropDown(){
-  
+  let lastLocation='';
+  if(sessionStorage.getItem("lastLocation")!=null || sessionStorage.getItem("lastLocation")!=undefined){
+    lastLocation=sessionStorage.getItem("lastLocation");
+  }
+
+  let lastLvl=1;
+  if(sessionStorage.getItem("lastLvl")!=null || sessionStorage.getItem("lastLvl")!=undefined){
+    lastLvl=sessionStorage.getItem("lastLvl");
+   
+  }
+  document.getElementById('op-'+lastLvl).selected=true;
+
   for(var i=65;i<=71;i++){ // ASCII codes from A to G
     var letter=String.fromCharCode(i);    
 
-    for(var j=1;j<=9;j++){
+    for(var j=1;j<=9;j++){     
       var optionElement = document.createElement('option');
       optionElement.value=letter+j 
       optionElement.text=letter+j 
+      if(lastLocation==optionElement.value){
+        optionElement.selected=true;
+      }
       //console.log("HELLO "+optionElement.value);
       locationField.appendChild(optionElement);
     }
@@ -70,7 +83,7 @@ btnHome.addEventListener("click",(e)=>{
     window.location.href='http://localhost:5500/index.html';
 });
 
-btnOut.addEventListener("click",(e)=>{
+/*btnOut.addEventListener("click",(e)=>{
     const amountInt=parseInt(outField.value);
     sessionStorage.setItem("lastLocation",locationField.value);
     sessionStorage.setItem("lastLvl",lvlField.value);
@@ -88,14 +101,14 @@ btnOut.addEventListener("click",(e)=>{
       }).then(function(response){
         window.location=window.location;
       })
-});
+});*/
 
-btnEnter.addEventListener("click",(e)=>{
-    const amountInt=parseInt(enterField.value);
-    const location=locationField.value;
-    const lvl=lvlField.value;
+btnAccept.addEventListener("click",(e)=>{
+    const amountInt=parseInt(enterField.value);   
+    sessionStorage.setItem("lastLocation",locationField.value);
+    sessionStorage.setItem("lastLvl",lvlField.value);
 
-    const DATA={amount:`${amountInt}`,};
+    const DATA={amount:`${amountInt}`,location:""+locationField.value+" Nivel "+lvlField.value};
     
     
     fetch(API_URL+"?action=modInsumo&product="+product, {
