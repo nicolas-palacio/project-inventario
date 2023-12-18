@@ -80,7 +80,7 @@ getProduct();
 loadDropDown();
 
 btnHome.addEventListener("click",(e)=>{
-    window.location.href='http://localhost:5500/index.html';
+    window.location.href='https://project-inventario.vercel.app/index.html';
 });
 
 /*btnOut.addEventListener("click",(e)=>{
