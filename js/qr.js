@@ -79,6 +79,7 @@ const html5Qrcode = new Html5Qrcode('reader');
                 document.getElementById('result').textContent = decodedText;
                 html5Qrcode.stop();
                 window.location.href='https://project-inventario.vercel.app/product-page.html?action=getInsumos&product='+decodedText;
+                //window.location.href='http://localhost:5500/product-page.html?action=getInsumos&product='+decodedText;
             }
         }
         const config = {fps:10, qrbox:{width:250, height:250}}
@@ -87,6 +88,12 @@ const html5Qrcode = new Html5Qrcode('reader');
 const encenderCamara = () => {
     btnScanQR.hidden = true;
     html5Qrcode.start({facingMode:"environment"}, config,qrCodeSuccessCallback ); 
+};
+
+const encenderCamara2 = () => {
+  console.log("HEEEEEEEEY")
+  btnScanQR.hidden = true;
+  html5Qrcode.start({facingMode:"environment"}, config,qrCodeSuccessCallback ); 
 };
 
 const cerrarCamara = () => {   
