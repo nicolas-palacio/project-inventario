@@ -20,7 +20,7 @@ const spinner=document.getElementById('spinner-card');
 
 const queryString=window.location.search;
 const urlParams= new URLSearchParams(queryString);
-const API_URL='https://script.google.com/macros/s/AKfycbxftcLJimg4Ow0TRPFZ67L5v6lAgTTGfjCMYEBTuVMoqRg4NtChybmENYJUv0bROQPk_Q/exec'
+const API_URL='https://script.google.com/macros/s/AKfycbzS06olGfKPV1Ul5e9BYJSBYtrNBRS7BdcMPio3Bm0EIDiJuz9Lov2e-uiirbwDn4JDrw/exec'
 
 const product= urlParams.get('product');
 
